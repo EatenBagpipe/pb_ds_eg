@@ -62,7 +62,17 @@ join(priority_queue &other)：合并两个优先队列~~（妈妈再也不用担
 | rc_binomial_heap_tag | O(1)                     | Θ(log(n))                | Θ(log(n))                | Θ(log(n))                | Θ(log(n))  |
 | thin_heap_tag        | O(1)                     | 最坏Θ(n) ，均摊Θ(log(n)) | 最坏Θ(log(n)) ，均摊O(1) | 最坏Θ(n) ，均摊Θ(log(n)) | Θ(n)       |
 
-可见，pb_ds中的优先队列更加优秀。
+各种方法的实测结果如下（以[Luogu P4779](https://www.luogu.org/problemnew/show/P4779)为例）：
+
+|                     | 无O2优化  | 有O2优化  |
+| ------------------- | --------- | --------- |
+| std::priority_queue | **932ms** | **411ms** |
+| pairing_heap_tag    | **536ms** | **351ms** |
+| binary_heap_tag     | **704ms** | **365ms** |
+| binomial_heap_tag   | **555ms** | **421ms** |
+| thin_heap_tag       | **681ms** | **411ms** |
+
+可见，pb_ds中的优先队列更加优秀，尤其是在没有O2优化的情况下。
 
 ### 小结
 
